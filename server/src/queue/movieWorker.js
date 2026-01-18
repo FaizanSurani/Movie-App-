@@ -15,7 +15,7 @@ try {
 
 new Worker(
   "movieQueue",
-  async job => {
+  async (job) => {
     try {
       if (job.name !== "ADD_MOVIE") return;
 
@@ -25,11 +25,10 @@ new Worker(
         throw new Error("Invalid movie payload");
       }
 
-      await Movie.findOneAndUpdate(
-        { imdbId: movie.imdbId },
-        movie,
-        { upsert: true, new: true }
-      );
+      await Movie.findOneAndUpdate({ imdbId: movie.imdbId }, movie, {
+        upsert: true,
+        new: true,
+      });
     } catch (err) {
       console.error("❌ Worker error:", err.message);
       throw err;
@@ -37,11 +36,10 @@ new Worker(
   },
   {
     connection: {
-      host: "127.0.0.1",
-      port: 6379
+      url: process.env.REDIS_URL,
     },
-    concurrency: 5
-  }
+    concurrency: 5,
+  },
 );
 
 console.log("🎬 Movie worker running");
