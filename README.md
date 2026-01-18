@@ -1,12 +1,12 @@
-# 🎬 Movie Management Application (MERN Stack)
+#  Movie Management Application (MERN Stack)
 
 A full-stack Movie Management application built using the **MERN stack** with **authentication**, **admin movie management**, **search & pagination**, and **background processing using queues and workers**.
 
 ---
 
-## 🚀 Features
+##  Features
 
-### 👤 User
+###  User
 - View all movies
 - Client-side pagination
 - Search movies by title or description
@@ -15,14 +15,14 @@ A full-stack Movie Management application built using the **MERN stack** with **
 
 ---
 
-### 🔐 Authentication
+###  Authentication
 - User Signup & Login
 - JWT-based authentication
 - Role-based access control (`user`, `admin`)
 
 ---
 
-### 🛠 Admin
+###  Admin
 - Add movies using popup form
 - Edit existing movies
 - Delete movies with confirmation dialog
@@ -31,7 +31,7 @@ A full-stack Movie Management application built using the **MERN stack** with **
 
 ---
 
-### ⚙️ Queue & Worker
+###  Queue & Worker
 - Background processing using **BullMQ**
 - Redis-based queue system
 - Separate worker service for scalability
@@ -39,7 +39,7 @@ A full-stack Movie Management application built using the **MERN stack** with **
 
 ---
 
-## 🧱 Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React.js
@@ -64,7 +64,7 @@ A full-stack Movie Management application built using the **MERN stack** with **
 ---
 
 ```
-## 📁 Project Structure
+##  Project Structure
 
 root/
 ├── client/ # React frontend
@@ -82,10 +82,10 @@ root/
 
 
 ````
-## 🪟 WSL & Redis Local Setup (Windows)
+##  WSL & Redis Local Setup (Windows)
 ---
 
-### 1️⃣ Install WSL
+###  Install WSL
 Open **PowerShell as Administrator** and run:
 ```powershell
 wsl --install
@@ -93,13 +93,13 @@ wsl --install
 Restart your system when prompted.
 ---
 
-### 2️⃣ Open Ubuntu (WSL)
+###  Open Ubuntu (WSL)
 
 * Launch **Ubuntu** from the Start Menu
 * Create a **UNIX username and password**
 ---
 
-### 3️⃣ Update System Packages
+###  Update System Packages
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -107,7 +107,7 @@ sudo apt update && sudo apt upgrade -y
 
 ---
 
-### 4️⃣ Install Redis Server
+###  Install Redis Server
 
 ```bash
 sudo apt install redis-server -y
@@ -115,7 +115,7 @@ sudo apt install redis-server -y
 
 ---
 
-### 5️⃣ Start Redis Service
+###  Start Redis Service
 
 ```bash
 sudo service redis-server start
@@ -123,7 +123,7 @@ sudo service redis-server start
 
 ---
 
-### 6️⃣ Verify Redis Is Running
+###  Verify Redis Is Running
 
 ```bash
 redis-cli ping
@@ -137,7 +137,7 @@ PONG
 
 ---
 
-### 7️⃣ Redis Local Configuration
+###  Redis Local Configuration
 
 Use the following Redis connection settings for local development:
 
@@ -150,7 +150,7 @@ Password: not required
 
 ---
 
-### 8️⃣ Restart Redis (If Needed)
+###  Restart Redis (If Needed)
 
 ```bash
 sudo service redis-server restart
@@ -158,7 +158,7 @@ sudo service redis-server restart
 
 ---
 
-### 9️⃣ Stop Redis (Optional)
+###  Stop Redis (Optional)
 
 ```bash
 sudo service redis-server stop
@@ -166,7 +166,7 @@ sudo service redis-server stop
 
 ---
 
-### ✅ Redis is now ready for BullMQ workers and queues
+###  Redis is now ready for BullMQ workers and queues
 
 ```
 
@@ -180,16 +180,16 @@ This project consists of:
 
 ---
 
-## 📦 Backend Setup
+##  Backend Setup
 
-### 1️⃣ Navigate to Backend Folder
+###  Navigate to Backend Folder
 ```bash
 cd server
 ````
 
 ---
 
-### 2️⃣ Install Dependencies
+###  Install Dependencies
 
 ```bash
 npm install
@@ -197,7 +197,7 @@ npm install
 
 ---
 
-### 3️⃣ Start Backend Server
+###  Start Backend Server
 
 ```bash
 npm run dev
@@ -211,11 +211,11 @@ http://localhost:5000
 
 ---
 
-## 🎬 Seeding IMDb Top 250 Movies (Optional)
+##  Seeding IMDb Top 250 Movies (Optional)
 
 This step is **optional** and used to initially populate the database with IMDb Top 250 movies.
 
-### 1️⃣ Ensure Redis is Running
+###  Ensure Redis is Running
 
 (See WSL + Redis setup section)
 
@@ -227,7 +227,7 @@ redis-cli ping
 
 ---
 
-### 2️⃣ Run Seed Script
+###  Run Seed Script
 
 ```bash
 node src/scripts/seedTop250Movies.js
@@ -242,11 +242,11 @@ What this does:
 
 ---
 
-## ⚙️ Worker Setup (Required for Queue Processing)
+##  Worker Setup (Required for Queue Processing)
 
 The worker listens to Redis and inserts movies into MongoDB.
 
-### 1️⃣ Open a New Terminal (Keep Backend Running)
+###  Open a New Terminal (Keep Backend Running)
 
 ```bash
 cd server
@@ -254,7 +254,7 @@ cd server
 
 ---
 
-### 2️⃣ Start Worker
+###  Start Worker
 
 ```bash
 node src/workers/movieWorker.js
@@ -263,12 +263,12 @@ node src/workers/movieWorker.js
 Expected output:
 
 ```text
-🎬 Movie worker running
+ Movie worker running
 ```
 
 ---
 
-### 🔁 Important
+###  Important
 
 * Backend server **must be running**
 * Redis **must be running**
@@ -277,9 +277,9 @@ Expected output:
 
 ---
 
-## 🌐 Frontend Setup
+##  Frontend Setup
 
-### 1️⃣ Navigate to Frontend Folder
+###  Navigate to Frontend Folder
 
 ```bash
 cd client
@@ -287,7 +287,7 @@ cd client
 
 ---
 
-### 2️⃣ Install Dependencies
+###  Install Dependencies
 
 ```bash
 npm install
@@ -295,7 +295,7 @@ npm install
 
 ---
 
-### 3️⃣ Start Frontend
+###  Start Frontend
 
 ```bash
 npm run dev
@@ -309,7 +309,7 @@ http://localhost:5173
 
 ---
 
-## 🔐 Admin Features
+##  Admin Features
 
 * Login as **Admin**
 * Add Movie (Popup Form)
@@ -319,7 +319,7 @@ http://localhost:5173
 
 ---
 
-## 🧠 Architecture Summary
+##  Architecture Summary
 
 * **Frontend** → React + MUI
 * **Backend** → Express + MongoDB
@@ -329,7 +329,7 @@ http://localhost:5173
 
 ---
 
-## ✅ Requirements Covered
+##  Requirements Covered
 
  User Authentication
  Admin Role Access
@@ -341,3 +341,13 @@ http://localhost:5173
  Clean UI with MUI
 
 ---
+
+## Deployment Details
+
+Frontend is deployed on **Vercel** using React (Vite).
+
+Backend API is deployed on **Render** using Node.js and Express.
+
+MongoDB is hosted on **MongoDB Atlas (Cloud)**.
+
+```
