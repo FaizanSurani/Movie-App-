@@ -43,10 +43,10 @@ export default function Search() {
 
   const totalPages = Math.ceil(movies.length / ITEMS_PER_PAGE);
 
-  const paginatedMovies = movies.slice(
-    (page - 1) * ITEMS_PER_PAGE,
-    page * ITEMS_PER_PAGE,
-  );
+    const paginatedMovies = Array.isArray(movies)
+    ? movies.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
+    : [];
+
 
   return (
     <Container sx={{ mt: 4 }}>
@@ -90,23 +90,22 @@ export default function Search() {
         </Typography>
       )}
       {!loading && movies.length > 0 && (
-        <Grid container spacing={3}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           {paginatedMovies.map((movie) => (
-            <Grid item xs={12} sm={6} md={3} key={movie._id}>
-              <MovieCard
-                movie={movie}
-                onEdit={(movie) => {
-                  setSelectedMovie(movie);
-                  setOpenForm(true);
-                }}
-                onDelete={(movie) => {
-                  setSelectedMovie(movie);
-                  setDeleteOpen(true);
-                }}
-              />
-            </Grid>
+            <MovieCard
+              key={movie._id}
+              movie={movie}
+              onEdit={(movie) => {
+                setSelectedMovie(movie);
+                setOpenForm(true);
+              }}
+              onDelete={(movie) => {
+                setSelectedMovie(movie);
+                setDeleteOpen(true);
+              }}
+            />
           ))}
-        </Grid>
+        </Box>
       )}
 
       {!loading && movies.length > 0 && totalPages > 1 && (
