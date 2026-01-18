@@ -105,6 +105,30 @@ export default function Movies() {
           )}
         </>
       )}
+      <MovieForm
+        open={openForm}
+        handleClose={() => {
+          setOpenForm(false);
+          setSelectedMovie(null);
+        }}
+        mode="edit"
+        initialData={selectedMovie}
+        onSuccess={() => {
+          searchMovies();
+        }}
+      />
+
+      <DeleteConfirmDialog
+        open={deleteOpen}
+        movie={selectedMovie}
+        onClose={() => {
+          setDeleteOpen(false);
+          setSelectedMovie(null);
+        }}
+        onDeleted={() => {
+          searchMovies();
+        }}
+      />
     </Container>
   );
 }
